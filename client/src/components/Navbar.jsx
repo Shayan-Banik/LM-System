@@ -44,26 +44,34 @@ const Navbar = () => {
           <img
             src={logo}
             alt=""
-            className="w-12.5 rounded-full border-2 border-white "
+            className="w-12.5 rounded-full border border-green-500 "
           />
         </div>
 
         {/* right Nav */}
         <div className="w-[30%] hidden lg:flex items-center justify-center gap-4">
           {!userData && (
-            <IoPersonCircleSharp className="w-12.5 h-12.5 cursor-pointer " />
-          )}
-          
-          {userData && (
-            <div
-              onClick={() => setShowProfile(!showProfile)}
-              className="w-12.5 h-12.5 rounded-full bg-black flex items-center justify-center text-white text-[20px] font-semibold cursor-pointer ">
-              {userData?.name.charAt(0).toUpperCase()}
-            </div>
+            <IoPersonCircleSharp className="w-12.5 h-12.5 cursor-pointer fill-white" />
           )}
 
+          {userData && !userData?.photoUrl ? (
+            <div
+              onClick={() => setShowProfile(!showProfile)}
+              className="w-12.5 h-12.5 rounded-full bg-black border border-green-500 flex items-center justify-center text-white text-[20px] font-semibold cursor-pointer ">
+              {userData?.name.charAt(0).toUpperCase()}
+            </div>
+          ): (
+            <img
+              src={userData?.photoUrl}
+              alt=""
+              className="w-12.5 h-12.5 rounded-full cursor-pointer"
+              onClick={() => setShowProfile(!showProfile)}
+            />
+          ) 
+          }
+
           {userData?.role === "educator" && (
-            <div className="px-5 py-2.5 border-2 border-white text-white bg-black rounded-[10px] text-[18px] font-light cursor-pointer ">
+            <div className="px-5 py-2.5 border border-green-500 text-white bg-black rounded-[10px] text-[18px] font-light cursor-pointer ">
               Dashboard
             </div>
           )}
@@ -76,11 +84,16 @@ const Navbar = () => {
           )}
 
           {showProfile && userData && (
-            <div className="absolute top-18 right-28 w-48 rounded-2xl bg-black text-white shadow-xl border border-zinc-800 py-3">
+            <div className="absolute top-18 right-16 w-70 rounded-2xl bg-black text-white shadow-xl border border-zinc-800 py-3">
               <div className="flex flex-col">
-                <div className="px-5 py-3 border-b border-zinc-800">
-                  <div className="font-semibold">{userData.name}</div>
-                  <div className="text-sm text-zinc-400">{userData.email}</div>
+                <div className="w-full min-w-0 px-5 py-3 border-b border-zinc-800">
+                  <div className="font-semibold text-sm sm:text-base truncate">
+                    {userData.name}
+                  </div>
+
+                  <div className="text-xs sm:text-sm text-zinc-400 break-words overflow-hidden">
+                    {userData.email}
+                  </div>
                 </div>
 
                 <button
@@ -88,7 +101,7 @@ const Navbar = () => {
                     navigate("/profile");
                     setShowProfile(false);
                   }}
-                 className="px-5 py-3 text-left hover:bg-zinc-800 transition-colors">
+                  className="px-5 py-3 text-left hover:bg-zinc-800 transition-colors">
                   My Profile
                 </button>
 
@@ -109,11 +122,11 @@ const Navbar = () => {
         {/* Mobile Menu */}
         <GiHamburgerMenu
           onClick={() => setShowMobileMenu(!showMobileMenu)}
-          className="lg:hidden w-9 h-9 cursor-pointer text-black"
+          className="lg:hidden w-9 h-9 cursor-pointer text-white"
         />
 
         {showMobileMenu && (
-          <div className="absolute top-17.5 right-3 w-56 rounded-xl mt-1 bg-black text-white shadow-xl border border-zinc-800 py-2 lg:hidden">
+          <div className="absolute top-17.5 right-3 w-70 rounded-xl mt-1 bg-black text-white shadow-xl border border-zinc-800 py-2 lg:hidden">
             {!userData ? (
               <button
                 onClick={() => {

@@ -1,11 +1,13 @@
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Navbar.jsx";
+import Hero from "../components/Hero.jsx";
 
 const Home = () => {
   return (
-    <div className="w-full overflow-hidden">
-      <div className="w-full lg:h-[140vh] h-[70vh] relative">
+    <div className="w-full ">
+      <div className="relative z-50">
         <Navbar />
       </div>
+      <Hero />
     </div>
   );
 };

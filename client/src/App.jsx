@@ -8,6 +8,7 @@ import Login from "./pages/Login.jsx";
 import useGetCurrentUser from "./hook/getCurrentUser.js";
 import Profile from "./pages/Profile.jsx";
 import ForgetPassword from "./pages/ForgetPassword";
+import EditProfile from "./pages/EditProfile.jsx";
 
 const App = () => {
   useGetCurrentUser();
@@ -35,6 +36,7 @@ const App = () => {
         />
 
         <Route path="/forget-password" element={<ForgetPassword />} />
+        <Route path="/edit-profile" element={<EditProfile />} />
       </Routes>
     </>
   );
