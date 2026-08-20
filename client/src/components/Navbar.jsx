@@ -54,24 +54,26 @@ const Navbar = () => {
             <IoPersonCircleSharp className="w-12.5 h-12.5 cursor-pointer fill-white" />
           )}
 
-          {userData && !userData?.photoUrl ? (
-            <div
-              onClick={() => setShowProfile(!showProfile)}
-              className="w-12.5 h-12.5 rounded-full bg-black border border-green-500 flex items-center justify-center text-white text-[20px] font-semibold cursor-pointer ">
-              {userData?.name.charAt(0).toUpperCase()}
-            </div>
-          ): (
-            <img
-              src={userData?.photoUrl}
-              alt=""
-              className="w-12.5 h-12.5 rounded-full cursor-pointer"
-              onClick={() => setShowProfile(!showProfile)}
-            />
-          ) 
-          }
+          {userData &&
+            (userData.photoUrl ? (
+              <img
+                src={userData.photoUrl}
+                alt="Profile"
+                className="w-12.5 h-12.5 rounded-full cursor-pointer"
+                onClick={() => setShowProfile(!showProfile)}
+              />
+            ) : (
+              <div
+                onClick={() => setShowProfile(!showProfile)}
+                className="w-12.5 h-12.5 rounded-full bg-black border border-green-500 flex items-center justify-center text-white text-[20px] font-semibold cursor-pointer">
+                {userData.name?.charAt(0).toUpperCase()}
+              </div>
+            ))}
 
           {userData?.role === "educator" && (
-            <div className="px-5 py-2.5 border border-green-500 text-white bg-black rounded-[10px] text-[18px] font-light cursor-pointer ">
+            <div
+              onClick={() => navigate("/dashboard")}
+              className="px-5 py-2.5 border border-green-500 text-white bg-black rounded-[10px] text-[18px] font-light cursor-pointer ">
               Dashboard
             </div>
           )}

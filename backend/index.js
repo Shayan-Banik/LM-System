@@ -7,11 +7,12 @@ import cors from "cors"
 import connectDB from "./config/db.js";
 import authRouter from "./routes/auth.route.js";
 import userRouter from "./routes/user.route.js";
+import courseRouter from "./routes/course.route.js";
 
 const PORT = process.env.PORT || 8000;
 const app = express();
 
-//Middlewares
+// Built in Middlewares
 app.use(express.json())
 app.use(cookieParser());
 app.use(cors({
@@ -19,8 +20,10 @@ app.use(cors({
     credentials: true
 }))
 
+// User defined Middlewares
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
+app.use("/api/course", courseRouter);
 
 
 

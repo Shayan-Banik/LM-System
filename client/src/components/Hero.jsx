@@ -5,6 +5,7 @@ import img2 from "../assets/img2.jpeg";
 import img3 from "../assets/img3.jpeg";
 import Features from "./Features";
 import ExploreCourses from "./ExploreCourses";
+import { useNavigate } from "react-router-dom";
 const Hero = () => {
   const learners = [
     {
@@ -32,6 +33,7 @@ const Hero = () => {
       bg: "bg-[#dcece3]",
     },
   ];
+  const navigate = useNavigate();
   return (
     <section className="relative w-full overflow-hidden bg-[#0a0b14] text-white min-h-screen">
       {/* Background image */}
@@ -76,7 +78,7 @@ const Hero = () => {
         </p>
 
         <div className="font-body mt-9 flex flex-wrap items-center justify-center gap-4">
-          <button className="group inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3 text-sm font-semibold text-white transition-all hover:border-white/60 hover:bg-white/5">
+          <button onClick={() => navigate("/all-courses")} type="button" className="group inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3 text-sm font-semibold text-white transition-all hover:border-white/60 hover:bg-white/5">
             View All Courses
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </button>

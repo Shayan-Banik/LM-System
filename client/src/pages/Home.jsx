@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar.jsx";
 import Hero from "../components/Hero.jsx";
+import CardPage from "../components/CardPage.jsx";
 
 const Home = () => {
   return (
@@ -8,6 +9,7 @@ const Home = () => {
         <Navbar />
       </div>
       <Hero />
+      <CardPage />
     </div>
   );
 };

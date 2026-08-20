@@ -36,7 +36,7 @@ export default function ExploreCourses() {
 
           <button
             type="button"
-            onClick={() => navigate("/courses")}
+            onClick={() => navigate("")}
            className="group inline-flex items-center gap-2 mt-8 rounded-full bg-linear-to-r from-green-500 to-emerald-500 px-6 py-3 text-sm font-semibold text-white shadow-[0_8px_30px_-8px_rgba(34,197,94,0.5)] hover:scale-[1.03] transition-transform">
             Explore Courses
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

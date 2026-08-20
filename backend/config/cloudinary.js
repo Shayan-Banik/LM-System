@@ -4,17 +4,18 @@ dotenv.config();
 import { v2 as cloudinary } from "cloudinary";
 import fs from "fs";
 
-// cloudinary.config({
-//   cloud_name: process.env.CLOUDINARY_NAME,
-//   api_key: process.env.CLOUDINARY_API_KEY,
-//   api_secret: process.env.CLOUDINARY_SECRET,
-// });
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_SECRET,
+});
 
 // console.log({
 //   cloudName: process.env.CLOUDINARY_NAME,
 //   apiKey: process.env.CLOUDINARY_API_KEY,
 //   secretExists: !!process.env.CLOUDINARY_SECRET,
 // });
+
 
 // try {
 //   const result = await cloudinary.api.ping();
@@ -23,12 +24,9 @@ import fs from "fs";
 //   console.error("Cloudinary connection error:", error);
 // }
 
+
 const uploadOnCloudinary = async (filePath) => {
-  cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_SECRET,
-  });
+  
   try {
     if (!filePath) return null;
 
